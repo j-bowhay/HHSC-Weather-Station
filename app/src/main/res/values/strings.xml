@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">HHSC Weather Station</string>
+    <string name="drawerOpen">Open</string>
+    <string name="drawerClosed">Close</string>
+    <string name="nav_drawer_img_desciption">Windy Tera Training</string>
+
+</resources>
