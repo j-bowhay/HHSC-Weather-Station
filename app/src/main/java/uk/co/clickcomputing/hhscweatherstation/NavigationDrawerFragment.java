@@ -57,8 +57,20 @@ public class NavigationDrawerFragment extends android.support.v4.app.Fragment {
 
     public static List<DrawerRow> getData(){
         List<DrawerRow> data = new ArrayList<>();
-        int icons[] = {R.drawable.ic_launcher,R.drawable.ic_launcher,R.drawable.ic_launcher,R.drawable.ic_launcher};
-        String titles[] = {"Link 1","Link 2","Link 3","Link 4"};
+        int icons[] = {R.drawable.ic_dashboard,
+                R.drawable.ic_speed,
+                R.drawable.ic_compass,
+                R.drawable.ic_rain,
+                R.drawable.ic_preasure,
+                R.drawable.ic_temperature,
+                R.drawable.ic_humidity};
+        String titles[] = {"DashBoard",
+                "Wind Speed",
+                "Wind Direction",
+                "Rain",
+                "Barometric Preasure",
+                "Temperature",
+                "Humidity"};
         for (int i = 0 ; i < titles.length && i < icons.length; i++){
             DrawerRow current = new DrawerRow();
             current.iconId = icons[i];
