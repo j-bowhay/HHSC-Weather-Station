@@ -1,9 +1,9 @@
 package uk.co.clickcomputing.hhscweatherstation;
 
+
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-
 
 
 public class MainActivity extends ActionBarActivity {
@@ -19,8 +19,16 @@ public class MainActivity extends ActionBarActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        android.support.v4.app.FragmentManager manager = getSupportFragmentManager();
+        android.support.v4.app.FragmentTransaction transaction = manager.beginTransaction();
+        DashBoard dashboard = new DashBoard();
+        transaction.add(R.id.fragmentContainer, dashboard);
+        transaction.commit();
+
+
         NavigationDrawerFragment drawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
         drawerFragment.setUp(R.id.fragment_navigation_drawer,(android.support.v4.widget.DrawerLayout) findViewById(R.id.drawerLayout), toolbar);
     }
+
 }

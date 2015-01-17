@@ -6,11 +6,15 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 public class Graph extends Fragment{
+    ImageView image;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.graph, container, false);
+        View layout = inflater.inflate(R.layout.graph, container, false);
+        image = (ImageView) layout.findViewById(R.id.ivGraph);
+        return layout;
     }
 }

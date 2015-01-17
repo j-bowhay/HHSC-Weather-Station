@@ -4,6 +4,7 @@ package uk.co.clickcomputing.hhscweatherstation;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -58,7 +59,9 @@ public class NavigationDrawerFragment extends android.support.v4.app.Fragment{
 
             @Override
             public void onClick(View view, int position) {
-                Toast.makeText(getActivity(), "onClick " + position, Toast.LENGTH_SHORT).show();
+                if (position >= 1){
+                    Toast.makeText(getActivity(), "Postion greater than 1", Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
