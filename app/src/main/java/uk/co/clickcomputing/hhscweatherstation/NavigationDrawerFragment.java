@@ -12,12 +12,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class NavigationDrawerFragment extends android.support.v4.app.Fragment {
+public class NavigationDrawerFragment extends android.support.v4.app.Fragment{
 
     public static final String PREF_FILE_NAME = "testPref";
     public static final String KEY_USER_LEARNED_DRAWER = "user_learned_drawer";
@@ -52,6 +53,19 @@ public class NavigationDrawerFragment extends android.support.v4.app.Fragment {
         adapter = new DrawerAdapter(getActivity(), getData());
         mRecyclerView.setAdapter(adapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mRecyclerView.addOnItemTouchListener(new DrawerAdapter.RecyclerTouchListerner(getActivity(), mRecyclerView, new DrawerAdapter.ClickListener() {
+
+            @Override
+            public void onClick(View view, int position) {
+                Toast.makeText(getActivity(), "onClick " + position, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onLongClick(View view, int position) {
+                Toast.makeText(getActivity(), "onLongClick " + position, Toast.LENGTH_SHORT).show();
+            }
+
+        }));
         return layout;
     }
 
