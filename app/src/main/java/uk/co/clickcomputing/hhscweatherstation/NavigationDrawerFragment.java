@@ -29,6 +29,7 @@ public class NavigationDrawerFragment extends android.support.v4.app.Fragment{
     private Boolean mUserLearnedDrawer;
     private Boolean mFromSavedInstanceState;
     private DrawerAdapter adapter;
+    private static String[] titles;
 
     public NavigationDrawerFragment() {
         mFromSavedInstanceState = false;
@@ -62,7 +63,9 @@ public class NavigationDrawerFragment extends android.support.v4.app.Fragment{
 
             @Override
             public void onLongClick(View view, int position) {
-                Toast.makeText(getActivity(), "onLongClick " + position, Toast.LENGTH_SHORT).show();
+                if(titles != null) {
+                    Toast.makeText(getActivity(), "Tap to view " + titles[position], Toast.LENGTH_SHORT).show();
+                }
             }
 
         }));
@@ -78,7 +81,7 @@ public class NavigationDrawerFragment extends android.support.v4.app.Fragment{
                 R.drawable.ic_preasure,
                 R.drawable.ic_temperature,
                 R.drawable.ic_humidity};
-        String titles[] = {"DashBoard",
+        titles = new String[]{"DashBoard",
                 "Wind Speed",
                 "Wind Direction",
                 "Rain",
