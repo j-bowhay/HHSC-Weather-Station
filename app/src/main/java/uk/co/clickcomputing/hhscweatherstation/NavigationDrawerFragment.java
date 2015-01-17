@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -59,8 +61,13 @@ public class NavigationDrawerFragment extends android.support.v4.app.Fragment{
 
             @Override
             public void onClick(View view, int position) {
-                if (position >= 1){
-                    Toast.makeText(getActivity(), "Postion greater than 1", Toast.LENGTH_SHORT).show();
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                if (position == 0){
+                    ((MainActivity)getActivity()).setFragmentDash();
+                }
+                else if(position >= 1){
+                    ((MainActivity)getActivity()).setFragmentGraph(position);
                 }
             }
 
