@@ -69,6 +69,7 @@ public class NavigationDrawerFragment extends android.support.v4.app.Fragment{
                 else if(position >= 1){
                     ((MainActivity)getActivity()).setFragmentGraph(position);
                 }
+                mDrawerLayout.closeDrawers();
             }
 
             @Override
