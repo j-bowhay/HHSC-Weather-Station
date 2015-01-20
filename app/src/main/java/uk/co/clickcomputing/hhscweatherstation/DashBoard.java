@@ -5,6 +5,8 @@ import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,12 +16,22 @@ public class DashBoard extends Fragment implements SwipeRefreshLayout.OnRefreshL
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View layout = inflater.inflate(R.layout.dashboard, container, false);
+        View layout = inflater.inflate(R.layout.dash_board, container, false);
 
         SwipeRefreshLayout mSwipeRefreshLayout = (SwipeRefreshLayout) layout.findViewById(R.id.swipe);
         mSwipeRefreshLayout.setOnRefreshListener(this);
 
+        RecyclerView mRecycleView = (RecyclerView) layout.findViewById(R.id.dashRecycler);
+        DashAdapter adapter = new DashAdapter(getActivity(), getData());
+        mRecycleView.setAdapter(adapter);
+        mRecycleView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
         return layout;
+    }
+
+    private String[] getData() {
+        String[] data = {"temperature", "Barometer", "Wind"};
+        return data;
     }
 
     @Override
