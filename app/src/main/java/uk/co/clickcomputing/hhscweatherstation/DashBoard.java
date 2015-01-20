@@ -14,11 +14,13 @@ import android.widget.Toast;
 
 public class DashBoard extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
+    SwipeRefreshLayout mSwipeRefreshLayout;
+
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.dash_board, container, false);
 
-        SwipeRefreshLayout mSwipeRefreshLayout = (SwipeRefreshLayout) layout.findViewById(R.id.swipe);
+        mSwipeRefreshLayout = (SwipeRefreshLayout) layout.findViewById(R.id.swipe);
         mSwipeRefreshLayout.setOnRefreshListener(this);
 
         RecyclerView mRecycleView = (RecyclerView) layout.findViewById(R.id.dashRecycler);
@@ -36,11 +38,7 @@ public class DashBoard extends Fragment implements SwipeRefreshLayout.OnRefreshL
 
     @Override
     public void onRefresh() {
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Toast.makeText(getActivity(), "Refreshing", Toast.LENGTH_SHORT).show();
-            }
-        }, 5000);
+        Toast.makeText(getActivity(), "Refreshing", Toast.LENGTH_SHORT).show();
+        mSwipeRefreshLayout.setRefreshing(false);
     }
 }
