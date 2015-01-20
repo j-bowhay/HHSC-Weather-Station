@@ -4,12 +4,11 @@ package uk.co.clickcomputing.hhscweatherstation;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.widget.Toast;
 
 
 public class MainActivity extends ActionBarActivity {
 
-    private Toolbar toolbar;
+    Boolean firstLaunch = Boolean.TRUE;
     android.support.v4.app.FragmentManager manager;
 
     @Override
@@ -17,7 +16,7 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        toolbar = (Toolbar) findViewById(R.id.app_bar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
@@ -33,6 +32,11 @@ public class MainActivity extends ActionBarActivity {
         android.support.v4.app.FragmentTransaction transaction = manager.beginTransaction();
         DashBoard dashboard = new DashBoard();
         transaction.replace(R.id.fragmentContainer, dashboard);
+        if(!firstLaunch) {
+            transaction.addToBackStack(null);
+        }else {
+            firstLaunch = false;
+        }
         transaction.commit();
     }
 
@@ -40,6 +44,7 @@ public class MainActivity extends ActionBarActivity {
         android.support.v4.app.FragmentTransaction transaction = manager.beginTransaction();
         Graph graph = new Graph();
         transaction.replace(R.id.fragmentContainer, graph);
+        transaction.addToBackStack(null);
         transaction.commit();
     }
 

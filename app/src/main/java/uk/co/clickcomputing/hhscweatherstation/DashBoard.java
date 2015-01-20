@@ -32,7 +32,11 @@ public class DashBoard extends Fragment implements SwipeRefreshLayout.OnRefreshL
     }
 
     private String[] getData() {
-        String[] data = {"temperature", "Barometer", "Wind"};
+        String[] data = {"Outside temperature: 53.4°F;",
+                "Barometer: 30.082 inHg;",
+                "Wind: 12 mph from 292°;",
+                "Rain rate: 0.00 in/hr;",
+                "Inside temperature: 70.7°F;"};
         return data;
     }
 
