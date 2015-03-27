@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.squareup.picasso.Picasso;
+
 public class Graph extends Fragment{
     ImageView image;
 
@@ -15,6 +17,9 @@ public class Graph extends Fragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.graph, container, false);
         image = (ImageView) layout.findViewById(R.id.ivGraph);
+        Picasso.with(getActivity())
+                .load("https://cms-assets.tutsplus.com/uploads/users/21/posts/19431/featured_image/CodeFeature.jpg")
+                .into(image);
         return layout;
     }
 }
