@@ -41,8 +41,12 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void setFragmentGraph(int position){
-        android.support.v4.app.FragmentTransaction transaction = manager.beginTransaction();
+        Bundle bundle = new Bundle();
+        bundle.putInt("position", position);
         Graph graph = new Graph();
+        graph.setArguments(bundle);
+
+        android.support.v4.app.FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.fragmentContainer, graph);
         transaction.addToBackStack(null);
         transaction.commit();
