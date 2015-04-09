@@ -42,4 +42,9 @@ public class DashAdapter extends RecyclerView.Adapter<DashAdapter.MyViewHolder>{
             text = (TextView) itemView.findViewById(R.id.dash_text);
         }
     }
+
+    public void updateData(String[] data){
+        this.data = data;
+        notifyDataSetChanged();
+    }
 }

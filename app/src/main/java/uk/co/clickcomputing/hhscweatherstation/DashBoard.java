@@ -1,7 +1,6 @@
 package uk.co.clickcomputing.hhscweatherstation;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -10,10 +9,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 public class DashBoard extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
-
+    DashAdapter adapter;
     SwipeRefreshLayout mSwipeRefreshLayout;
 
     @Override
@@ -24,7 +22,7 @@ public class DashBoard extends Fragment implements SwipeRefreshLayout.OnRefreshL
         mSwipeRefreshLayout.setOnRefreshListener(this);
 
         RecyclerView mRecycleView = (RecyclerView) layout.findViewById(R.id.dashRecycler);
-        DashAdapter adapter = new DashAdapter(getActivity(), getData());
+        adapter = new DashAdapter(getActivity(), getData());
         mRecycleView.setAdapter(adapter);
         mRecycleView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
@@ -42,7 +40,13 @@ public class DashBoard extends Fragment implements SwipeRefreshLayout.OnRefreshL
 
     @Override
     public void onRefresh() {
-        Toast.makeText(getActivity(), "Refreshing", Toast.LENGTH_SHORT).show();
+        String[] newData = {"This",
+                "is",
+                "dummy",
+                "data"};
+        adapter.updateData(newData);
         mSwipeRefreshLayout.setRefreshing(false);
     }
+
+
 }
