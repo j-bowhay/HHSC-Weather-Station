@@ -19,7 +19,7 @@
             android:orientation="vertical"
             android:id="@+id/fragmentContainer">
 
-            </LinearLayout>
+        </LinearLayout>
 
 
     </LinearLayout>
@@ -31,5 +31,6 @@
         android:layout_gravity="start"
         android:name="uk.co.clickcomputing.hhscweatherstation.NavigationDrawerFragment"
         android:id="@+id/fragment_navigation_drawer"/>
+
 
 </android.support.v4.widget.DrawerLayout>
